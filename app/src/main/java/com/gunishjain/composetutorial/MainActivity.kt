@@ -4,12 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,7 +44,13 @@ fun MessageCard(msg: Message) {
 
         Spacer(modifier = Modifier.width(10.dp))
 
-        Column {
+        Column (modifier = Modifier
+            .background(Color.Blue)
+            .fillMaxSize(0.5f),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+
+        ){
             Text(text = msg.author)
             Spacer(modifier = Modifier.height(4.dp))
             Text(text = msg.body)
@@ -49,6 +58,14 @@ fun MessageCard(msg: Message) {
 
     }
 }
+
+
+/*
+Note: In Column the the main axis is vertical so we use arrangement for main axis
+and cross axis in column is horizontal so we use Alignment.
+For Main Axis = Use Arrangement
+For Cross Axis = Use Alignment
+ */
 
 @Preview
 @Composable
