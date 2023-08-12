@@ -1,10 +1,13 @@
 package com.gunishjain.composetutorial
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
@@ -21,7 +24,20 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MessageCard(Message("Android", "Jetpack Compose"))
+                Column(modifier = Modifier
+                    .border(5.dp,Color.Magenta)
+                    .padding(5.dp)
+                    .border(10.dp,Color.Black)
+                    .padding(5.dp)
+                    .offset(30.dp,30.dp)
+                    .border(5.dp,Color.Green)
+                ){
+                    MessageCard(Message("Gunish", "Jetpack Compose"))
+                    Text(text = "hello", modifier = Modifier.clickable {
+                        Toast.makeText(applicationContext,"Hello",Toast.LENGTH_SHORT).show()
+                    })
+                }
+
         }
     }
 }
@@ -46,7 +62,7 @@ fun MessageCard(msg: Message) {
 
         Column (modifier = Modifier
             .background(Color.Blue)
-            .fillMaxSize(0.5f),
+            .fillMaxSize(0.2f),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
 
@@ -71,6 +87,6 @@ For Cross Axis = Use Alignment
 @Composable
 fun PreviewMessageCard() {
     MessageCard(
-        msg = Message("Lexi", "Hey, take a look at Jetpack Compose, it's great!")
+        msg = Message("Lexi", "yo, take a look at Jetpack Compose, it's great!")
     )
 }
